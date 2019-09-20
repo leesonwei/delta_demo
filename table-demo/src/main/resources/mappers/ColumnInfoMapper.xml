@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.delta.tabledemo.dao.ColumnInfoDao">
+    <select id="getColumnInfoInAllUser" parameterType="com.delta.tabledemo.entity.ColumnInfo" resultType="com.delta.tabledemo.entity.ColumnInfo">
+        select c.owner,c.TABLE_NAME as tableName,c.COLUMN_NAME as columnName,c.DATA_TYPE as dataType,
+c.DATA_LENGTH as dataLength,c.NULLABLE from all_tab_columns c where 1 = 1
+ and c.column_name = #{columnName}
+ and c.owner = #{owner}
+    </select>
+</mapper>

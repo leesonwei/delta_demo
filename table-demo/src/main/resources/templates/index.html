@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px #ccc solid;
+            width:100%;
+        }
+        tr{
+            border: 1px #ccc solid;
+        }
+        tr:nth-child(even){
+            background-color: whitesmoke;
+        }
+        td,th{
+            padding: 2px;
+            border: 1px #ccc solid;
+        }
+        th{
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form action="index">
+        <input type="text" name="tableName" placeholder="请输入表名"><button type="submit">查看</button>
+    </form>
+</div>
+<div>
+    <span>result:</span>
+    <span th:text="${result.msg}"></span>
+</div>
+<!--<div>
+    <span>table comment:</span>
+    <span th:text="${result.table.comment}"></span>
+</div>-->
+<table>
+    <thead>
+        <tr>
+            <th width="5%">no.</th>
+            <th width="10%">owner</th>
+            <th width="10%">table_name</th>
+            <th width="10%">column_name</th>
+            <th width="50%">comments</th>
+            <th width="15%">origin_con_id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  th:each="da, dastat : ${result.data}">
+            <td width="5%" th:text="${dastat.index}"></td>
+            <td width="10%" th:text="${da.owner}"></td>
+            <td width="10%" th:text="${da.tableName}"></td>
+            <td width="10%" th:text="${da.columnName}"></td>
+            <td width="50%" th:text="${da.comments}"></td>
+            <td width="15%" th:text="${da.originConId}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
